@@ -4,8 +4,9 @@
   "main": "Backend/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node Backend/server.js",
-    "dev": "nodemon Backend/server.js"
+    "start": "cd Backend && nodemon server.js",
+		"client": "cd frontend && npm start",
+		"dev": "concurrently -n 'server,client' -c 'red,green' \"npm run start\" \"npm run client\" "
   },
   "author": "Prateek Jain",
   "license": "ISC",

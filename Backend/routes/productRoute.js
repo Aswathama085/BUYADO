@@ -4,7 +4,7 @@ const {
   createProduct,
   updateProduct,
   deleteProduct,
-  getProductDeatils,
+  getProductDetails,
   createProductReview,
   getProductReviews,
   deleteReviews,
@@ -24,7 +24,7 @@ router
   .put(isAuthenticateUser, authorizeRoles("admin"), updateProduct)
   .delete(isAuthenticateUser, authorizeRoles("admin"), deleteProduct);
 
-router.route("/product/:id").get(getProductDeatils);
+router.route("/product/:id").get(getProductDetails);
 
 router.route("/review").put(isAuthenticateUser, createProductReview);
 
