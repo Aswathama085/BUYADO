@@ -1,21 +1,25 @@
 {
-  "name": "ecommerce",
+  "name": "buyado",
   "version": "1.0.0",
   "main": "Backend/server.js",
+  "proxy": "http://localhost:4000/",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cd Backend && nodemon server.js",
-		"client": "cd frontend && npm start",
-		"dev": "concurrently -n 'server,client' -c 'red,green' \"npm run start\" \"npm run client\" "
+    "client": "cd frontend && npm start",
+    "dev": "concurrently -n 'server,client' -c 'red,green' \"npm run start\" \"npm run client\" "
   },
   "author": "Prateek Jain",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "cloudinary": "^1.27.1",
     "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^4.1.3",
     "mongoose": "^6.0.10",
