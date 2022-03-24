@@ -26,8 +26,11 @@ app.use("/api/v1",order);
 // app.post('/api/v1/login',(req,res)=>{
 //     res.json({data:"Hello BC"});
 // })
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 7e2b957769e6e362ed21d0b1fc7bdacd7db92eb1
 //MiddleWare for error
 app.use(errorMiddleware);
 module.exports = app;
