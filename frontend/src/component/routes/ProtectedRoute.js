@@ -7,7 +7,6 @@ const ProtectedRoute = ({ isAdmin, component: Component, ...rest }) => {
   const { loading, isAuthenticated, user } = useSelector((state) => state.user);
 
   return (
-    <Fragment>
       {loading === false && (
         <Route
           {...rest}
@@ -23,8 +22,7 @@ const ProtectedRoute = ({ isAdmin, component: Component, ...rest }) => {
             return <Component {...props} />;
           }}
         />
-      )}
-    </Fragment>
+      
   );
 };
 
