@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
+import {useNavigate} from "react-router-dom";
 import "./UpdatePassword.css";
 import Loader from "../layout/Loader/Loader";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,8 +11,9 @@ import LockOpenIcon from "@material-ui/icons/LockOpen";
 import LockIcon from "@material-ui/icons/Lock";
 import VpnKeyIcon from "@material-ui/icons/VpnKey";
 
-const UpdatePassword = ({ history }) => {
+const UpdatePassword = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const alert = useAlert();
 
   const { error, isUpdated, loading } = useSelector((state) => state.profile);
@@ -41,13 +43,13 @@ const UpdatePassword = ({ history }) => {
     if (isUpdated) {
       alert.success("Profile Updated Successfully");
 
-      history.push("/account");
+      navigate("account");
 
       dispatch({
         type: UPDATE_PASSWORD_RESET,
       });
     }
-  }, [dispatch, error, alert, history, isUpdated]);
+  }, [dispatch, error, alert, isUpdated]);
 
   return (
     <Fragment>

@@ -2,7 +2,7 @@ import "./App.css";
 import Header from "./component/layout/Header/Header.js";
 import Footer from "./component/layout/Footer/Footer.js";
 import Home from "./component/Home/Home.js";
-import { BrowserRouter as Router, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Navigate, Route, Routes, Outlet } from "react-router-dom";
 import WebFont from "webfontloader";
 import React, { Fragment } from "react";
 import ProductDetails from "./component/Product/ProductDetails.js";
@@ -14,9 +14,9 @@ import { loadUser } from "./actions/userAction";
 import UserOptions from "./component/layout/Header/UserOptions.js";
 import { useSelector } from "react-redux";
 import Profile from "./component/User/Profile.js";
-import ProtectedRoute from "./component/Route/ProtectedRoute";
 import UpdateProfile from "./component/User/UpdateProfile.js";
 import UpdatePassword from "./component/User/UpdatePassword.js";
+import ProtectedRoute from "./component/routes/ProtectedRoute";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -37,17 +37,24 @@ function App() {
         <Header />
 
         {isAuthenticated && <UserOptions user={user} />}
+
         <Routes>
+
           <Route path="/" element={<Home />} />
           <Route path="/product/:id" element={<ProductDetails />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products/:keyword" element={<Products />} />
           <Route path="/search" element={<Search />} />
-          <Route path="/account" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-          <Route path="/me/update" element={<ProtectedRoute><UpdateProfile /></ProtectedRoute>} />
+
+          <Route path="/account" element={isAuthenticated ? <Profile />:<LoginSignUp />}/>
+          <Route path="/me/update" element={isAuthenticated? <UpdateProfile />:<LoginSignUp />}/>
+          <Route path="/password/update" element={isAuthenticated? <UpdatePassword />:<LoginSignUp />}/>
+
+          <Route path="/password/forgot" element={<ForgotPassword />} />
+
           <Route path="/login" element={<LoginSignUp />} />
-         
-          
+
+      
         </Routes>
 
 
@@ -56,5 +63,6 @@ function App() {
     </Router>
   );
 }
+
 
 export default App;
