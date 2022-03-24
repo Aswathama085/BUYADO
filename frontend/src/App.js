@@ -46,11 +46,9 @@ function App() {
           <Route path="/products/:keyword" element={<Products />} />
           <Route path="/search" element={<Search />} />
 
-          <Route path="/account" element={isAuthenticated ? <Profile />:<LoginSignUp />}/>
-          <Route path="/me/update" element={isAuthenticated? <UpdateProfile />:<LoginSignUp />}/>
-          <Route path="/password/update" element={isAuthenticated? <UpdatePassword />:<LoginSignUp />}/>
-
-          <Route path="/password/forgot" element={<ForgotPassword />} />
+          <ProtectedRoute path="/account" element={<Profile />}/>
+          <ProtectedRoute path="/me/update" element={<UpdateProfile/>}/>
+          <ProtectedRoute path="/password/update" element={<UpdatePassword />}/>
 
           <Route path="/login" element={<LoginSignUp />} />
 
