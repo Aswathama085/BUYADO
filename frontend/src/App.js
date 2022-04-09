@@ -14,13 +14,8 @@ import { loadUser } from "./actions/userAction";
 import UserOptions from "./component/layout/Header/UserOptions.js";
 import { useSelector } from "react-redux";
 import Profile from "./component/User/Profile.js";
-<<<<<<< HEAD
-import UpdateProfile from "./component/User/UpdateProfile.js";
-import UpdatePassword from "./component/User/UpdatePassword.js";
-import ProtectedRoute from "./component/routes/ProtectedRoute";
-=======
-import ProtectedRoute from "./component/Route/ProtectedRoute";
->>>>>>> 7e2b957769e6e362ed21d0b1fc7bdacd7db92eb1
+import UpdateProfile from "./component/User/UpdateProfile";
+import UpdatePassword from "./component/User/UpdatePassword"
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
@@ -39,40 +34,24 @@ function App() {
     <Router>
       <Fragment>
         <Header />
-<<<<<<< HEAD
 
         {isAuthenticated && <UserOptions user={user} />}
 
         <Routes>
-
-=======
-
-        {isAuthenticated && <UserOptions user={user} />}
-        <Routes>
->>>>>>> 7e2b957769e6e362ed21d0b1fc7bdacd7db92eb1
           <Route path="/" element={<Home />} />
           <Route path="/product/:id" element={<ProductDetails />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products/:keyword" element={<Products />} />
           <Route path="/search" element={<Search />} />
-<<<<<<< HEAD
-
-          <ProtectedRoute path="/account" element={<Profile />}/>
-          <ProtectedRoute path="/me/update" element={<UpdateProfile/>}/>
-          <ProtectedRoute path="/password/update" element={<UpdatePassword />}/>
-
+          <Route path="/account" element={isAuthenticated ? <Profile /> : <LoginSignUp/>} />
+          <Route path="/me/update" element={isAuthenticated ? <UpdateProfile /> : <LoginSignUp/>} />
+          <Route path="/password/update" element={isAuthenticated ? <UpdatePassword /> : <LoginSignUp/>} />
           <Route path="/login" element={<LoginSignUp />} />
 
       
         </Routes>
 
 
-=======
-          <Route path="/login" element={<LoginSignUp />} />
-          <Route path="/account" element={<ProtectedRoute />} />
-        </Routes>
-
->>>>>>> 7e2b957769e6e362ed21d0b1fc7bdacd7db92eb1
         <Footer />
       </Fragment>
     </Router>

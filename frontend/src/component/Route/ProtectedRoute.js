@@ -12,11 +12,11 @@ const ProtectedRoute = ({ isAdmin, component: Component, ...rest }) => {
           {...rest}
           render={(props) => {
             if (isAuthenticated === false) {
-              return <Navigate to="/login" />;
+              return <Navigate to="/signIn" />;
             }
 
             if (isAdmin === true && user.role !== "admin") {
-              return <Navigate to="/login" />;
+              return <Navigate to="/signIn" />;
             }
 
             return <Component {...props} />;

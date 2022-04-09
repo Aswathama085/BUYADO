@@ -12,9 +12,9 @@ import {useNavigate} from "react-router-dom";
 
 const UpdateProfile = () => {
 
+  const navigate=useNavigate();
   const dispatch = useDispatch();
   const alert = useAlert();
-  let navigate = useNavigate();
 
   const { user } = useSelector((state) => state.user);
   const { isUpdated ,error, loading } = useSelector((state) => state.profile);

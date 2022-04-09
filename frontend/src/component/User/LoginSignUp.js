@@ -82,7 +82,7 @@ const LoginSignUp = ({history}) => {
 
     if(isAuthenticated)
     {
-      navigate("./account");
+      navigate("/account");
     }
   }, [dispatch, error, alert,isAuthenticated,history]);
 
